@@ -156,7 +156,6 @@ const BenefitsCard = () => {
 // Компонент с предложением для бизнеса
 const BusinessOffer = () => (
   <div className="p-6 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg relative overflow-hidden">
-    {/* Декоративные элементы */}
     <div className="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
     <div className="absolute bottom-0 right-0 w-40 h-40 bg-white/5 rounded-full translate-x-1/3 translate-y-1/3"></div>
 
@@ -226,7 +225,6 @@ const ContactFormCard = () => (
 export const ContactSection = () => {
   return (
     <section id="contact" className="py-20 bg-blue-50 relative">
-      {/* Декоративные элементы */}
       <div className="absolute top-0 right-0 w-full h-full pointer-events-none overflow-hidden">
         <svg
           width="100%"
@@ -274,7 +272,7 @@ const SectionHeader = () => (
       Сделайте первый шаг к здоровью
     </div>
     <h2 className="text-3xl md:text-4xl font-bold mb-6">
-      Выберите свой результат
+      Запись на тренировку за 3 недели
     </h2>
     <p className="text-lg text-gray-600">
       Запишитесь на первое занятие уже сегодня, потому как тренировки расписаны
