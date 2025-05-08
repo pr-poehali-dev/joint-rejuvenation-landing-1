@@ -1,3 +1,4 @@
+
 import Icon from "@/components/ui/icon";
 
 export const MethodSection = () => {
@@ -12,9 +13,15 @@ export const MethodSection = () => {
   return (
     <section id="method" className="py-20 bg-white">
       <div className="container max-w-6xl">
+        <div className="max-w-3xl mx-auto text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold">
+            Что такое гимнастика и тренажер «Ось Жизни»
+          </h2>
+        </div>
+        
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+          {/* Фотография тренера с интегрированной информацией */}
           <div className="relative">
-            {/* Фотография тренера с интегрированной информацией */}
             <div className="relative rounded-lg overflow-hidden shadow-xl">
               <img
                 src="https://cdn.poehali.dev/files/996e86a4-180c-49a1-9fbe-d22060d38540.jpeg"
@@ -69,13 +76,6 @@ export const MethodSection = () => {
           </div>
 
           <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-800 font-medium text-sm">
-              <Icon name="Info" className="h-4 w-4" />О методике
-            </div>
-            <h2 className="text-3xl font-bold">
-              Что такое гимнастика и тренажер «Ось Жизни»
-            </h2>
-
             {/* Конденсированный список преимуществ */}
             <div className="bg-blue-50 p-4 rounded-lg border border-blue-100">
               <h3 className="font-bold mb-3 flex items-center gap-2">

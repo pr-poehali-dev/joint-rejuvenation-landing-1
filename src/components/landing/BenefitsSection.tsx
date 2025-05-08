@@ -1,3 +1,4 @@
+
 import Icon from "@/components/ui/icon";
 import { cn } from "@/lib/utils";
 
@@ -47,12 +48,59 @@ export const BenefitsSection = () => {
       title: "Перезагрузка нервной системы",
       desc: "Расслабление и мгновенный прилив сил",
     },
-    // остальные элементы массива benefits
+    {
+      icon: "Brain",
+      title: "Улучшение работы мозга",
+      desc: "Быстрая активация всех отделов мозга",
+    },
+    {
+      icon: "Mail",
+      title: "Улучшение связей организма",
+      desc: "Восстановление передачи сигналов",
+    },
+    {
+      icon: "ArrowUp",
+      title: "Повышение концентрации",
+      desc: "Ясное мышление, лучше запоминание",
+    },
+    {
+      icon: "Smartphone",
+      title: "Снижение чувствительности",
+      desc: "Уменьшение или исчезновение болей",
+    },
+    {
+      icon: "ShieldCheck",
+      title: "Мышечная релаксация",
+      desc: "Разрушение мышечных блоков",
+    },
+    {
+      icon: "Pilcrow",
+      title: "Коррекция позвоночника",
+      desc: "Расслабление мышц и коррекция осанки",
+    },
+    {
+      icon: "Moon",
+      title: "Улучшение сна",
+      desc: "Глубокий сон и лёгкое пробуждение",
+    },
   ];
 
   return (
     <section className="py-20 bg-gradient-to-b from-blue-50 to-white">
       <div className="container max-w-6xl">
+        <div className="max-w-3xl mx-auto text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-800 font-medium text-sm mb-4">
+            <Icon name="CheckCircle" className="h-4 w-4" />
+            Эффективность с первого занятия
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            1 занятие даст вам
+          </h2>
+          <p className="text-lg text-gray-600">
+            Уже после первого сеанса на тренажере «Ось Жизни» вы почувствуете эти изменения
+          </p>
+        </div>
+        
         {/* Медицинский чек-лист */}
         <div className="mb-10 p-5 bg-blue-50 rounded-xl border border-blue-100 shadow-sm max-w-4xl mx-auto">
           <div className="bg-white rounded-lg p-6 border border-gray-200">

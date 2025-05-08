@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
 
@@ -57,14 +58,14 @@ export const HeroSection = () => {
                 alt="Вячеслав Ан - автор методики Ось Жизни"
                 className="h-auto max-h-[80vh] object-contain drop-shadow-2xl"
               />
-              <div className="absolute bottom-4 right-4 bg-white/90 backdrop-blur shadow-lg rounded-lg p-3 text-sm border border-blue-100 animate-fade-in">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 flex-shrink-0 rounded-full bg-blue-100 flex items-center justify-center">
-                    <Icon name="Award" className="h-4 w-4 text-blue-600" />
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-blue-600/90 to-purple-600/90 backdrop-blur-sm shadow-lg rounded-lg px-4 py-3 text-sm border border-blue-400 animate-fade-in">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 flex-shrink-0 rounded-full bg-white/20 flex items-center justify-center">
+                    <Icon name="User" className="h-5 w-5 text-white" />
                   </div>
-                  <div>
-                    <p className="font-semibold">Вячеслав Ан</p>
-                    <p className="text-xs text-gray-600">
+                  <div className="text-white">
+                    <p className="font-bold text-base">Вячеслав Ан</p>
+                    <p className="text-white/90 text-xs">
                       специалист физической реабилитации
                     </p>
                   </div>
