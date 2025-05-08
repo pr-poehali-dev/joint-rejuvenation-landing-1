@@ -53,18 +53,20 @@ export const HeroSection = () => {
           <div className="relative flex justify-center md:justify-end order-1 md:order-2">
             <div className="relative z-10 h-auto max-h-[80vh] w-auto">
               <img
-                src="https://cdn.poehali.dev/files/3d0eefeb-ea4c-4bc9-b137-37b1cfcd102b.png"
+                src="https://cdn.poehali.dev/files/e074d577-d9d6-4c6f-a868-d6d1a27e3a87.jpeg"
                 alt="Вячеслав Ан - автор методики Ось Жизни"
                 className="h-auto max-h-[80vh] object-contain drop-shadow-2xl"
               />
-              <div className="absolute top-4 right-4 bg-white/90 backdrop-blur shadow-lg rounded-lg p-3 text-sm border border-blue-100 animate-fade-in">
+              <div className="absolute bottom-4 right-4 bg-white/90 backdrop-blur shadow-lg rounded-lg p-3 text-sm border border-blue-100 animate-fade-in">
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 flex-shrink-0 rounded-full bg-blue-100 flex items-center justify-center">
                     <Icon name="Award" className="h-4 w-4 text-blue-600" />
                   </div>
                   <div>
-                    <p className="font-semibold">Автор методики</p>
-                    <p className="text-xs text-gray-600">Вячеслав Ан</p>
+                    <p className="font-semibold">Вячеслав Ан</p>
+                    <p className="text-xs text-gray-600">
+                      специалист физической реабилитации
+                    </p>
                   </div>
                 </div>
               </div>

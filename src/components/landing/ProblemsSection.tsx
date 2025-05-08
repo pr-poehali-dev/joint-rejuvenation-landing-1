@@ -1,4 +1,3 @@
-
 import React from "react";
 import Icon from "@/components/ui/icon";
 
@@ -73,230 +72,14 @@ const TreatmentComparison = () => (
 // Компонент для анатомической иллюстрации
 const AnatomyIllustration = () => (
   <div className="mt-6 bg-white p-4 rounded-lg border border-blue-100">
-    <div className="relative w-full h-64 flex items-center justify-center bg-blue-50/50 rounded-md">
-      <div className="relative w-48 h-64">
-        {/* Силуэт человека с выделенными точками боли */}
-        <svg viewBox="0 0 100 100" className="w-full h-full">
-          {/* Базовый силуэт человека */}
-          <path
-            d="M50,10 C55,10 60,15 60,20 C60,25 55,30 50,30 C45,30 40,25 40,20 C40,15 45,10 50,10"
-            fill="#e0e7ff"
-            stroke="#3b82f6"
-            strokeWidth="0.5"
-          />
-          <path
-            d="M43,30 L43,38 C43,40 45,42 50,42 C55,42 57,40 57,38 L57,30"
-            fill="#e0e7ff"
-            stroke="#3b82f6"
-            strokeWidth="0.5"
-          />
-          <path
-            d="M50,42 L50,75"
-            stroke="#3b82f6"
-            strokeWidth="1"
-            strokeDasharray="2,1"
-          />
-          <path
-            d="M43,42 L40,62 L37,75 L40,90"
-            fill="none"
-            stroke="#3b82f6"
-            strokeWidth="0.5"
-          />
-          <path
-            d="M57,42 L60,62 L63,75 L60,90"
-            fill="none"
-            stroke="#3b82f6"
-            strokeWidth="0.5"
-          />
-          <path
-            d="M37,48 L28,58"
-            fill="none"
-            stroke="#3b82f6"
-            strokeWidth="0.5"
-          />
-          <path
-            d="M63,48 L72,58"
-            fill="none"
-            stroke="#3b82f6"
-            strokeWidth="0.5"
-          />
-
-          {/* Выделенные болевые точки */}
-          <circle cx="50" cy="18" r="3" fill="#f87171" opacity="0.8">
-            <animate
-              attributeName="opacity"
-              values="0.8;0.4;0.8"
-              dur="2s"
-              repeatCount="indefinite"
-            />
-            <title>Головные боли</title>
-          </circle>
-          <circle cx="50" cy="25" r="4" fill="#f87171" opacity="0.8">
-            <animate
-              attributeName="opacity"
-              values="0.8;0.4;0.8"
-              dur="2s"
-              repeatCount="indefinite"
-              begin="0.3s"
-            />
-            <title>Боли в шее</title>
-          </circle>
-          <circle cx="50" cy="38" r="4" fill="#f87171" opacity="0.8">
-            <animate
-              attributeName="opacity"
-              values="0.8;0.4;0.8"
-              dur="2s"
-              repeatCount="indefinite"
-              begin="0.6s"
-            />
-            <title>Боли в верхней части спины</title>
-          </circle>
-          <circle cx="50" cy="55" r="5" fill="#f87171" opacity="0.8">
-            <animate
-              attributeName="opacity"
-              values="0.8;0.4;0.8"
-              dur="2s"
-              repeatCount="indefinite"
-              begin="0.9s"
-            />
-            <title>Боли в пояснице</title>
-          </circle>
-          <circle cx="37" cy="48" r="3" fill="#f87171" opacity="0.8">
-            <animate
-              attributeName="opacity"
-              values="0.8;0.4;0.8"
-              dur="2s"
-              repeatCount="indefinite"
-              begin="1.2s"
-            />
-            <title>Боли в плече</title>
-          </circle>
-          <circle cx="63" cy="48" r="3" fill="#f87171" opacity="0.8">
-            <animate
-              attributeName="opacity"
-              values="0.8;0.4;0.8"
-              dur="2s"
-              repeatCount="indefinite"
-              begin="1.2s"
-            />
-            <title>Боли в плече</title>
-          </circle>
-          <circle cx="28" cy="58" r="3" fill="#f87171" opacity="0.8">
-            <animate
-              attributeName="opacity"
-              values="0.8;0.4;0.8"
-              dur="2s"
-              repeatCount="indefinite"
-              begin="1.5s"
-            />
-            <title>Боли в локте</title>
-          </circle>
-          <circle cx="72" cy="58" r="3" fill="#f87171" opacity="0.8">
-            <animate
-              attributeName="opacity"
-              values="0.8;0.4;0.8"
-              dur="2s"
-              repeatCount="indefinite"
-              begin="1.5s"
-            />
-            <title>Боли в локте</title>
-          </circle>
-          <circle cx="38" cy="75" r="3" fill="#f87171" opacity="0.8">
-            <animate
-              attributeName="opacity"
-              values="0.8;0.4;0.8"
-              dur="2s"
-              repeatCount="indefinite"
-              begin="1.8s"
-            />
-            <title>Боли в колене</title>
-          </circle>
-          <circle cx="62" cy="75" r="3" fill="#f87171" opacity="0.8">
-            <animate
-              attributeName="opacity"
-              values="0.8;0.4;0.8"
-              dur="2s"
-              repeatCount="indefinite"
-              begin="1.8s"
-            />
-            <title>Боли в колене</title>
-          </circle>
-
-          {/* Линии позвоночника с выделением проблемных зон */}
-          <path
-            d="M50,25 C48,30 52,35 50,40 C48,45 52,50 50,55 C48,60 52,65 50,70"
-            fill="none"
-            stroke="#f87171"
-            strokeWidth="2"
-            strokeDasharray="1,1"
-            opacity="0.8"
-          >
-            <title>Проблемы позвоночника</title>
-          </path>
-
-          {/* Анатомические обозначения */}
-          <line
-            x1="56"
-            y1="18"
-            x2="70"
-            y2="15"
-            stroke="#3b82f6"
-            strokeWidth="0.5"
-            strokeDasharray="1,1"
-          />
-          <text
-            x="71"
-            y="15"
-            fontSize="3"
-            fill="#3b82f6"
-            fontWeight="bold"
-          >
-            ШОП
-          </text>
-
-          <line
-            x1="57"
-            y1="38"
-            x2="75"
-            y2="38"
-            stroke="#3b82f6"
-            strokeWidth="0.5"
-            strokeDasharray="1,1"
-          />
-          <text
-            x="76"
-            y="38"
-            fontSize="3"
-            fill="#3b82f6"
-            fontWeight="bold"
-          >
-            ГОП
-          </text>
-
-          <line
-            x1="57"
-            y1="55"
-            x2="75"
-            y2="55"
-            stroke="#3b82f6"
-            strokeWidth="0.5"
-            strokeDasharray="1,1"
-          />
-          <text
-            x="76"
-            y="55"
-            fontSize="3"
-            fill="#3b82f6"
-            fontWeight="bold"
-          >
-            ПОП
-          </text>
-        </svg>
-
-        {/* Медицинские указатели и обозначения */}
-        <div className="absolute top-1 left-0 bg-white/70 backdrop-blur-sm p-1 rounded text-xs text-blue-800 border border-blue-200 shadow-sm">
-          Области хронических болей
-        </div>
+    <div className="relative w-full flex items-center justify-center bg-blue-50/50 rounded-md overflow-hidden">
+      <img
+        src="https://cdn.poehali.dev/files/dbf6aece-e163-4f03-be32-c724769ec279.png"
+        alt="Области хронических болей"
+        className="w-full max-w-md h-auto"
+      />
+      <div className="absolute top-3 left-3 bg-white/80 backdrop-blur-sm p-1.5 rounded text-xs text-blue-800 border border-blue-200 shadow-sm">
+        Области хронических болей
       </div>
     </div>
   </div>
@@ -310,9 +93,8 @@ const SolutionBlock = () => (
       <h3 className="font-semibold text-xl">Мы знаем решение!</h3>
     </div>
     <p className="font-medium text-gray-800">
-      Мы знаем, как вновь сделать вас молодыми, энергичными и
-      активными, за одну программу, опираясь лишь на научные открытия
-      скрытых ресурсов вашего тела!
+      Мы знаем, как вновь сделать вас молодыми, энергичными и активными, за одну
+      программу, опираясь лишь на научные открытия скрытых ресурсов вашего тела!
     </p>
   </div>
 );
@@ -340,7 +122,7 @@ export const ProblemsSection = () => {
     <section id="problems" className="py-20 bg-white">
       <div className="container max-w-6xl">
         <SectionHeader />
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <SymptomsSection symptoms={symptoms} />
           <TreatmentsSection treatments={treatments} />
@@ -355,8 +137,8 @@ const SectionHeader = () => (
   <div className="max-w-3xl mx-auto text-center mb-12">
     <h2 className="text-3xl md:text-4xl font-bold mb-6">Узнаете себя?</h2>
     <p className="text-lg text-gray-600">
-      Эти симптомы могут сигнализировать о проблемах с позвоночником,
-      суставами и нервной системой
+      Эти симптомы могут сигнализировать о проблемах с позвоночником, суставами
+      и нервной системой
     </p>
   </div>
 );

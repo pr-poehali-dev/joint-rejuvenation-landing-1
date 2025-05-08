@@ -1,37 +1,18 @@
-
 import Icon from "@/components/ui/icon";
 
 export const MethodSection = () => {
   const features = [
-    "Адаптивная гимнастика на тренажёре «Ось Жизни» — революционный способ укрепления костей и суставов.",
-    "Запуск естественного омоложения: за 45 минут, 1 раз в неделю, под контролем специалиста.",
-    "Результаты с первого занятия: улучшение осанки, исчезновение болей, повышение плотности костей.",
-    "Безопасно для любого возраста и уровня подготовки — научно доказано, подтверждено исследованиями Harvard, Emory, 100+ публикаций.",
-    "Без лекарств, операций и побочных эффектов — только ваши внутренние ресурсы!",
-  ];
-
-  const keyFeatures = [
-    {
-      title: "Безболезненно",
-      desc: "Не причиняет дискомфорта",
-      icon: "Shield",
-    },
-    {
-      title: "Быстрый эффект",
-      desc: "Результат с первого сеанса",
-      icon: "Zap",
-    },
-    {
-      title: "Естественно",
-      desc: "Использует ресурсы организма",
-      icon: "Leaf",
-    },
+    "Революционный способ укрепления суставов и костей",
+    "Запуск естественного омоложения за 45 минут",
+    "С одного занятия результат: улучшение осанки, исчезновение болей",
+    "Научно доказано, подтверждено Harvard, Emory",
+    "Без лекарств, операций - только ваш внутренний ресурс",
   ];
 
   return (
     <section id="method" className="py-20 bg-white">
       <div className="container max-w-6xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
           <div className="relative">
             {/* Фотография тренера с интегрированной информацией */}
             <div className="relative rounded-lg overflow-hidden shadow-xl">
@@ -40,26 +21,43 @@ export const MethodSection = () => {
                 alt="Вячеслав Ан - автор методики"
                 className="w-full h-auto object-cover rounded-lg"
               />
-              
+
               {/* Полупрозрачный градиентный оверлей */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-              
+
               {/* Информация об авторе внутри фото */}
               <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
                 <h3 className="font-bold text-2xl mb-1">Вячеслав Ан</h3>
-                <p className="text-white/80 mb-3">Автор АФГ гимнастики и тренажера «Ось Жизни»</p>
+                <p className="text-white/80 mb-3">
+                  Автор АФГ гимнастики и тренажера «Ось Жизни»
+                </p>
                 <ul className="space-y-1.5">
                   <li className="flex items-start gap-2 text-sm">
-                    <Icon name="Medal" className="shrink-0 mt-0.5 text-yellow-400 h-4 w-4" />
-                    <span className="text-white/90">30+ лет опыта в оздоровительных практиках</span>
+                    <Icon
+                      name="Medal"
+                      className="shrink-0 mt-0.5 text-yellow-400 h-4 w-4"
+                    />
+                    <span className="text-white/90">
+                      30+ лет опыта в оздоровительных практиках
+                    </span>
                   </li>
                   <li className="flex items-start gap-2 text-sm">
-                    <Icon name="Medal" className="shrink-0 mt-0.5 text-yellow-400 h-4 w-4" />
-                    <span className="text-white/90">Трёхкратный чемпион страны, МС по гребле</span>
+                    <Icon
+                      name="Medal"
+                      className="shrink-0 mt-0.5 text-yellow-400 h-4 w-4"
+                    />
+                    <span className="text-white/90">
+                      Трёхкратный чемпион страны, МС по гребле
+                    </span>
                   </li>
                   <li className="flex items-start gap-2 text-sm">
-                    <Icon name="Medal" className="shrink-0 mt-0.5 text-yellow-400 h-4 w-4" />
-                    <span className="text-white/90">Чемпион по паурлифтингу, 1 дан кекусинкай карате</span>
+                    <Icon
+                      name="Medal"
+                      className="shrink-0 mt-0.5 text-yellow-400 h-4 w-4"
+                    />
+                    <span className="text-white/90">
+                      Чемпион по паурлифтингу, 1 дан кекусинкай карате
+                    </span>
                   </li>
                 </ul>
               </div>
@@ -78,22 +76,6 @@ export const MethodSection = () => {
               Что такое гимнастика и тренажер «Ось Жизни»
             </h2>
 
-            {/* Ключевые выгоды в одном ряду */}
-            <div className="grid grid-cols-3 gap-4">
-              {keyFeatures.map((item, index) => (
-                <div 
-                  key={index} 
-                  className="flex flex-col items-center p-4 rounded-lg bg-gradient-to-b from-blue-50 to-purple-50 border border-blue-100 shadow-sm hover:shadow-md transition-all"
-                >
-                  <div className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center mb-3">
-                    <Icon name={item.icon} className="h-6 w-6 text-purple-600" />
-                  </div>
-                  <h3 className="font-semibold text-center">{item.title}</h3>
-                  <p className="text-center text-sm text-gray-600 mt-1">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-
             {/* Конденсированный список преимуществ */}
             <div className="bg-blue-50 p-4 rounded-lg border border-blue-100">
               <h3 className="font-bold mb-3 flex items-center gap-2">
@@ -102,8 +84,14 @@ export const MethodSection = () => {
               </h3>
               <ul className="space-y-2">
                 {features.map((feature, idx) => (
-                  <li key={idx} className="flex items-start gap-2 bg-white p-3 rounded shadow-sm">
-                    <Icon name="ArrowRight" className="shrink-0 mt-1 text-blue-600" />
+                  <li
+                    key={idx}
+                    className="flex items-start gap-2 bg-white p-3 rounded shadow-sm"
+                  >
+                    <Icon
+                      name="ArrowRight"
+                      className="shrink-0 mt-1 text-blue-600"
+                    />
                     <p className="text-sm">{feature}</p>
                   </li>
                 ))}
