@@ -119,7 +119,7 @@ export const ProblemsSection = () => {
   ];
 
   return (
-    <section id="problems" className="py-20 bg-white">
+    <section id="problems" className="py-16 bg-white">
       <div className="container max-w-6xl">
         <SectionHeader />
 

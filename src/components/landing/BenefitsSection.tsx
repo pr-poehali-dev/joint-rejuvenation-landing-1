@@ -1,4 +1,3 @@
-
 import Icon from "@/components/ui/icon";
 import { cn } from "@/lib/utils";
 
@@ -86,7 +85,7 @@ export const BenefitsSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-blue-50 to-white">
+    <section className="py-16 bg-gradient-to-b from-blue-50 to-white">
       <div className="container max-w-6xl">
         <div className="max-w-3xl mx-auto text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-800 font-medium text-sm mb-4">
@@ -97,10 +96,11 @@ export const BenefitsSection = () => {
             1 занятие даст вам
           </h2>
           <p className="text-lg text-gray-600">
-            Уже после первого сеанса на тренажере «Ось Жизни» вы почувствуете эти изменения
+            Уже после первого сеанса на тренажере «Ось Жизни» вы почувствуете
+            эти изменения
           </p>
         </div>
-        
+
         {/* Медицинский чек-лист */}
         <div className="mb-10 p-5 bg-blue-50 rounded-xl border border-blue-100 shadow-sm max-w-4xl mx-auto">
           <div className="bg-white rounded-lg p-6 border border-gray-200">
