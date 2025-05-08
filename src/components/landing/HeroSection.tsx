@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
 
@@ -54,7 +53,7 @@ export const HeroSection = () => {
           <div className="relative flex justify-center md:justify-end order-1 md:order-2">
             <div className="relative z-10 h-auto max-h-[80vh] w-auto">
               <img
-                src="https://cdn.poehali.dev/files/e074d577-d9d6-4c6f-a868-d6d1a27e3a87.jpeg"
+                src="https://cdn.poehali.dev/files/fe55c1e4-216a-4dd2-9f59-f91f05c340e4.png"
                 alt="Вячеслав Ан - автор методики Ось Жизни"
                 className="h-auto max-h-[80vh] object-contain drop-shadow-2xl"
               />
