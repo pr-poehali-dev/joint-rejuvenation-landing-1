@@ -1,3 +1,4 @@
+
 import Icon from "@/components/ui/icon";
 import {
   Card,
@@ -5,12 +6,13 @@ import {
   CardHeader,
   CardDescription,
 } from "@/components/ui/card";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 interface TestimonialProps {
   name: string;
   role: string;
   comment: string;
+  avatar?: string;
   initials?: string;
 }
 
@@ -18,9 +20,10 @@ const TestimonialCard = ({
   name,
   role,
   comment,
+  avatar,
   initials,
 }: TestimonialProps) => {
-  const derivedInitials = initials || name.split(",")[0].charAt(0);
+  const nameInitials = initials || name.split(",")[0].charAt(0);
 
   return (
     <Card className="border bg-white hover:shadow-md transition-shadow relative">
@@ -29,8 +32,9 @@ const TestimonialCard = ({
       </div>
       <CardHeader>
         <div className="flex items-center gap-3 mb-4">
-          <Avatar className="h-12 w-12 bg-gradient-to-br from-blue-400 to-purple-500 text-white">
-            <AvatarFallback>{derivedInitials}</AvatarFallback>
+          <Avatar className="h-14 w-14 bg-gradient-to-br from-blue-400 to-purple-500 text-white">
+            {avatar ? <AvatarImage src={avatar} alt={name} /> : null}
+            <AvatarFallback className="text-xl font-semibold">{nameInitials}</AvatarFallback>
           </Avatar>
           <div>
             <h3 className="font-bold">{name}</h3>
@@ -61,42 +65,49 @@ const TestimonialCard = ({
 };
 
 export const TestimonialsSection = () => {
+  // Используем реалистичные аватары для каждого отзыва
   const testimonials = [
     {
       name: "Владимир, 62 года",
       role: "военный пенсионер",
       comment:
         "Я снова бегаю с внуком и сплю всю ночь без боли. Вы подарили мне вторую молодость!",
+      avatar: "https://randomuser.me/api/portraits/men/72.jpg"
     },
     {
       name: "Дмитрий, 55 лет",
       role: "проектировщик",
       comment:
         "После первой тренировки улучшился сон, а после курса исправилась осанка, ушёл горб.",
+      avatar: "https://randomuser.me/api/portraits/men/52.jpg"
     },
     {
       name: "Вера, 67 лет",
       role: "владелец сети ювелирных магазинов",
       comment:
         "За 3 занятия исчезла «холка», подтянулась кожа лица, а после программы прошли боли в кистях.",
+      avatar: "https://randomuser.me/api/portraits/women/79.jpg"
     },
     {
       name: "Юрий, 77 лет",
       role: "пенсионер, мастер цигун",
       comment:
         "После 1 занятия давление снизилось с 150/130 до 130/110, после полного курса ушла боль в шее, повысилась жизненная энергия.",
+      avatar: "https://randomuser.me/api/portraits/men/41.jpg"
     },
     {
       name: "Вероника, 66 лет",
       role: "владелец юридической компании",
       comment:
         "Пройдя полный курс, у меня восстановилась чувствительность половины тела, которой не было уже полтора года после инсульта.",
+      avatar: "https://randomuser.me/api/portraits/women/65.jpg"
     },
     {
       name: "Светлана, 66 лет",
       role: "владелец гостиницы",
       comment:
         "После курса ушли трещины на пятках, выровнялся позвоночник, плечи, улучшился сон, появилась личная жизнь.",
+      avatar: "https://randomuser.me/api/portraits/women/44.jpg"
     },
   ];
 

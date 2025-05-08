@@ -1,30 +1,37 @@
 
 import Icon from "@/components/ui/icon";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 
 interface BenefitItemProps {
   icon: string;
   title: string;
   desc: string;
+  checked?: boolean;
 }
 
-const BenefitItem = ({ icon, title, desc }: BenefitItemProps) => (
-  <Card className="border-0 shadow-lg bg-white hover-scale">
-    <CardHeader className="text-center pb-2">
-      <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-blue-100 to-purple-100">
+const BenefitItem = ({ icon, title, desc, checked = true }: BenefitItemProps) => (
+  <div className={cn(
+    "flex items-start gap-4 p-4 rounded-lg transition-all", 
+    "bg-white border border-gray-100 shadow-sm hover:shadow-md", 
+    checked ? "border-l-4 border-l-green-500" : ""
+  )}>
+    <div className="flex-shrink-0">
+      <div className="flex h-12 w-12 items-center justify-center rounded-md bg-gradient-to-br from-blue-50 to-purple-50 border border-blue-100">
         <Icon name={icon} className="h-6 w-6 text-purple-600" />
       </div>
-      <CardTitle className="text-xl">{title}</CardTitle>
-    </CardHeader>
-    <CardContent className="text-center text-gray-600">
-      <p>{desc}</p>
-    </CardContent>
-  </Card>
+    </div>
+    <div className="flex-1">
+      <div className="flex items-center gap-2 mb-1">
+        <h3 className="text-lg font-semibold">{title}</h3>
+        {checked && (
+          <div className="bg-green-100 w-6 h-6 rounded-full flex items-center justify-center">
+            <Icon name="Check" className="h-4 w-4 text-green-600" />
+          </div>
+        )}
+      </div>
+      <p className="text-gray-600">{desc}</p>
+    </div>
+  </div>
 );
 
 export const BenefitsSection = () => {
@@ -83,10 +90,43 @@ export const BenefitsSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {benefits.map((item, index) => (
-            <BenefitItem key={index} {...item} />
-          ))}
+        {/* Медицинский чек-лист */}
+        <div className="mb-10 p-5 bg-blue-50 rounded-xl border border-blue-100 shadow-sm max-w-4xl mx-auto">
+          <div className="bg-white rounded-lg p-6 border border-gray-200">
+            <div className="flex items-center gap-3 mb-4 pb-3 border-b border-gray-100">
+              <Icon name="Clipboard" className="h-8 w-8 text-blue-600" />
+              <div>
+                <div className="text-xs text-gray-400 uppercase tracking-wider">Форма №OZ-1</div>
+                <h3 className="font-bold text-xl">ЛИСТ РЕЗУЛЬТАТИВНОСТИ ТЕРАПИИ</h3>
+              </div>
+              <div className="ml-auto bg-blue-100 px-3 py-1 rounded text-blue-800 text-sm font-medium">
+                1 сеанс
+              </div>
+            </div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              {benefits.slice(0, benefits.length/2).map((item, index) => (
+                <BenefitItem key={index} {...item} />
+              ))}
+            </div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-5">
+              {benefits.slice(benefits.length/2).map((item, index) => (
+                <BenefitItem key={index + benefits.length/2} {...item} />
+              ))}
+            </div>
+            
+            <div className="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center">
+              <div className="text-sm text-gray-500">
+                <span className="font-medium">Примечание врача:</span> Стойкий терапевтический эффект 
+                с первого сеанса. Рекомендуется полный курс для закрепления.
+              </div>
+              <div className="flex-shrink-0 flex items-center gap-2">
+                <Icon name="FileCheck" className="h-5 w-5 text-green-600" />
+                <span className="text-green-600 font-medium">ПОДТВЕРЖДЕНО</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

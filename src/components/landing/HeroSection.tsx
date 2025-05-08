@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
 
@@ -51,24 +52,67 @@ export const HeroSection = () => {
             </div>
           </div>
           <div className="flex-1 relative aspect-square max-w-lg">
-            {/* Тренажер с выделенными узлами */}
+            {/* Тренажер с выделенными узлами - оптимизировано */}
             <div className="relative">
-              <img
-                src="https://cdn.poehali.dev/files/2629f2ea-4800-4572-aa3b-b83611ecb88a.png"
-                alt="Тренажер Ось Жизни"
-                className="w-full h-full object-contain relative z-10"
-              />
-              {/* Акценты на основных узлах */}
-              <div className="absolute top-1/4 left-1/4 w-12 h-12 rounded-full bg-blue-500/20 animate-pulse -z-0" />
-              <div className="absolute top-1/2 left-1/3 w-16 h-16 rounded-full bg-purple-500/20 animate-pulse delay-150 -z-0" />
-              <div className="absolute bottom-1/3 right-1/4 w-14 h-14 rounded-full bg-orange-500/20 animate-pulse delay-300 -z-0" />
+              <div className="relative z-10">
+                <img
+                  src="https://cdn.poehali.dev/files/2629f2ea-4800-4572-aa3b-b83611ecb88a.png"
+                  alt="Тренажер Ось Жизни"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              
+              {/* Ключевые узлы тренажера - выделены круговыми пульсирующими эффектами */}
+              <div className="absolute top-1/4 left-1/3 w-16 h-16 rounded-full bg-blue-500/20 animate-pulse -z-0">
+                <div className="absolute inset-0 rounded-full border-2 border-blue-500 animate-ping opacity-75"></div>
+                <div className="absolute inset-1/4 bg-white p-1 rounded-lg shadow text-xs font-medium border border-blue-200">
+                  Опорная ось
+                </div>
+              </div>
+              
+              <div className="absolute top-1/2 left-1/3 w-16 h-16 rounded-full bg-purple-500/20 animate-pulse delay-150 -z-0">
+                <div className="absolute inset-0 rounded-full border-2 border-purple-500 animate-ping opacity-75"></div>
+                <div className="absolute inset-1/4 bg-white p-1 rounded-lg shadow text-xs font-medium border border-purple-200">
+                  Силовой блок
+                </div>
+              </div>
+              
+              <div className="absolute bottom-1/3 right-1/3 w-16 h-16 rounded-full bg-orange-500/20 animate-pulse delay-300 -z-0">
+                <div className="absolute inset-0 rounded-full border-2 border-orange-500 animate-ping opacity-75"></div>
+                <div className="absolute inset-1/4 bg-white p-1 rounded-lg shadow text-xs font-medium border border-orange-200">
+                  Стабилизаторы
+                </div>
+              </div>
 
               {/* Информационные указатели */}
-              <div className="absolute top-1/5 right-0 bg-white/80 backdrop-blur shadow-md rounded-lg p-2 text-sm border border-blue-100">
-                <p className="font-medium">Запатентованная технология</p>
-                <p className="text-xs text-gray-600">
-                  Уникальная механика движения
-                </p>
+              <div className="absolute top-1/5 right-0 bg-white/80 backdrop-blur shadow-md rounded-lg p-3 text-sm border border-blue-100">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 flex-shrink-0 rounded-full bg-blue-100 flex items-center justify-center">
+                    <Icon name="Award" className="h-4 w-4 text-blue-600" />
+                  </div>
+                  <div>
+                    <p className="font-semibold">Запатентованная технология</p>
+                    <p className="text-xs text-gray-600">Уникальная механика движения</p>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Технические спецификации */}
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-blue-50 to-transparent p-4 rounded-lg">
+                <div className="flex justify-center gap-4 text-xs text-blue-800">
+                  <div className="flex items-center gap-1">
+                    <Icon name="CheckCircle" className="h-4 w-4 text-green-600" />
+                    <span>Безопасно</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <Icon name="Shield" className="h-4 w-4 text-blue-600" />
+                    <span>Сертифицировано</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <Icon name="Star" className="h-4 w-4 text-yellow-600" />
+                    <span>Эффективно</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
