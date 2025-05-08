@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
 
@@ -52,68 +51,57 @@ export const HeroSection = () => {
             </div>
           </div>
           <div className="flex-1 relative aspect-square max-w-lg">
-            {/* Тренажер с выделенными узлами - оптимизировано */}
-            <div className="relative">
-              <div className="relative z-10">
-                <img
-                  src="https://cdn.poehali.dev/files/2629f2ea-4800-4572-aa3b-b83611ecb88a.png"
-                  alt="Тренажер Ось Жизни"
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              
-              {/* Ключевые узлы тренажера - выделены круговыми пульсирующими эффектами */}
-              <div className="absolute top-1/4 left-1/3 w-16 h-16 rounded-full bg-blue-500/20 animate-pulse -z-0">
-                <div className="absolute inset-0 rounded-full border-2 border-blue-500 animate-ping opacity-75"></div>
-                <div className="absolute inset-1/4 bg-white p-1 rounded-lg shadow text-xs font-medium border border-blue-200">
-                  Опорная ось
-                </div>
-              </div>
-              
-              <div className="absolute top-1/2 left-1/3 w-16 h-16 rounded-full bg-purple-500/20 animate-pulse delay-150 -z-0">
-                <div className="absolute inset-0 rounded-full border-2 border-purple-500 animate-ping opacity-75"></div>
-                <div className="absolute inset-1/4 bg-white p-1 rounded-lg shadow text-xs font-medium border border-purple-200">
-                  Силовой блок
-                </div>
-              </div>
-              
-              <div className="absolute bottom-1/3 right-1/3 w-16 h-16 rounded-full bg-orange-500/20 animate-pulse delay-300 -z-0">
-                <div className="absolute inset-0 rounded-full border-2 border-orange-500 animate-ping opacity-75"></div>
-                <div className="absolute inset-1/4 bg-white p-1 rounded-lg shadow text-xs font-medium border border-orange-200">
-                  Стабилизаторы
-                </div>
-              </div>
+            {/* Фотография тренера вместо тренажера */}
+            <div className="relative z-10">
+              <img
+                src="https://cdn.poehali.dev/files/e074d577-d9d6-4c6f-a868-d6d1a27e3a87.jpeg"
+                alt="Вячеслав Ан - автор методики Ось Жизни"
+                className="w-full h-full object-contain drop-shadow-xl"
+              />
+            </div>
 
-              {/* Информационные указатели */}
-              <div className="absolute top-1/5 right-0 bg-white/80 backdrop-blur shadow-md rounded-lg p-3 text-sm border border-blue-100">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 flex-shrink-0 rounded-full bg-blue-100 flex items-center justify-center">
-                    <Icon name="Award" className="h-4 w-4 text-blue-600" />
-                  </div>
-                  <div>
-                    <p className="font-semibold">Запатентованная технология</p>
-                    <p className="text-xs text-gray-600">Уникальная механика движения</p>
-                  </div>
+            {/* Информационные указатели */}
+            <div className="absolute top-10 right-0 bg-white/80 backdrop-blur shadow-md rounded-lg p-3 text-sm border border-blue-100">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 flex-shrink-0 rounded-full bg-blue-100 flex items-center justify-center">
+                  <Icon name="Award" className="h-4 w-4 text-blue-600" />
+                </div>
+                <div>
+                  <p className="font-semibold">Автор методики</p>
+                  <p className="text-xs text-gray-600">Вячеслав Ан</p>
                 </div>
               </div>
-              
-              {/* Технические спецификации */}
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-blue-50 to-transparent p-4 rounded-lg">
-                <div className="flex justify-center gap-4 text-xs text-blue-800">
-                  <div className="flex items-center gap-1">
-                    <Icon name="CheckCircle" className="h-4 w-4 text-green-600" />
-                    <span>Безопасно</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Icon name="Shield" className="h-4 w-4 text-blue-600" />
-                    <span>Сертифицировано</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Icon name="Star" className="h-4 w-4 text-yellow-600" />
-                    <span>Эффективно</span>
-                  </div>
-                </div>
+            </div>
+
+            {/* Достижения тренера */}
+            <div className="absolute bottom-10 right-0 bg-white/80 backdrop-blur shadow-md rounded-lg p-3 text-sm border border-blue-100 max-w-xs">
+              <div className="flex items-center gap-2 mb-2">
+                <Icon name="Medal" className="h-5 w-5 text-yellow-500" />
+                <p className="font-semibold">Достижения автора:</p>
               </div>
+              <ul className="space-y-1 text-xs">
+                <li className="flex items-start gap-1">
+                  <Icon
+                    name="Check"
+                    className="h-3 w-3 text-green-500 mt-0.5"
+                  />
+                  <span>30+ лет опыта в оздоровительных практиках</span>
+                </li>
+                <li className="flex items-start gap-1">
+                  <Icon
+                    name="Check"
+                    className="h-3 w-3 text-green-500 mt-0.5"
+                  />
+                  <span>Трёхкратный чемпион страны, МС по гребле</span>
+                </li>
+                <li className="flex items-start gap-1">
+                  <Icon
+                    name="Check"
+                    className="h-3 w-3 text-green-500 mt-0.5"
+                  />
+                  <span>Чемпион по паурлифтингу, 1 дан кекусинкай карате</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
