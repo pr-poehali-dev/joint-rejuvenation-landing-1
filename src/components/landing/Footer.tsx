@@ -51,22 +51,10 @@ export const Footer = () => {
                 <div>
                   <p className="font-medium">Телефон</p>
                   <a
-                    href="tel:+78001234567"
+                    href="tel:+79312277799"
                     className="text-gray-400 hover:text-white transition-colors"
                   >
-                    +7 (800) 123-45-67
-                  </a>
-                </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <Icon name="Mail" className="shrink-0 mt-1 text-blue-400" />
-                <div>
-                  <p className="font-medium">Email</p>
-                  <a
-                    href="mailto:info@os-zhizni.ru"
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    info@os-zhizni.ru
+                    +7 (931) 227-77-99
                   </a>
                 </div>
               </li>
@@ -75,7 +63,7 @@ export const Footer = () => {
                 <div>
                   <p className="font-medium">Адрес</p>
                   <p className="text-gray-400">
-                    г. Москва, ул. Примерная, д. 123
+                    г. Санкт-Петербург, улица Большой Смоленский проспект, д10
                   </p>
                 </div>
               </li>

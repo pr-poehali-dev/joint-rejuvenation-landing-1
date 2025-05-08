@@ -113,7 +113,7 @@ const ContactInfo = () => (
     <div className="flex items-center gap-2">
       <Icon name="MapPin" className="h-4 w-4 text-blue-600" />
       <span className="text-sm font-medium">
-        Адрес: г. Москва, ул. Примерная, д. 123
+        Адрес: г. Санкт-Петербург, улица Большой Смоленский проспект, д10
       </span>
     </div>
   </div>
