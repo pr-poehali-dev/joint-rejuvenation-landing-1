@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Icon from "@/components/ui/icon";
 
-// Функция для отправки в Google Form (та же что и в ContactSection)
 const submitToGoogleForm = async (
   data: { name: string; phone: string },
   formUrl: string,
@@ -18,88 +17,88 @@ const submitToGoogleForm = async (
       body: formData,
       mode: "no-cors",
     });
-    return true;
   } catch (error) {
-    console.error("Ошибка отправки формы:", error);
-    return false;
+    console.error("Error submitting form:", error);
   }
 };
 
-const HeroSection = () => {
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
+export const HeroSection = () => {
+  const [formData, setFormData] = useState({ name: "", phone: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const GOOGLE_FORM_URL =
-    "https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const success = await submitToGoogleForm({ name, phone }, GOOGLE_FORM_URL);
+    await submitToGoogleForm(
+      formData,
+      "https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse"
+    );
 
+    setIsSubmitted(true);
     setIsSubmitting(false);
-
-    if (success) {
-      setIsSubmitted(true);
-      setName("");
-      setPhone("");
-      setTimeout(() => setIsSubmitted(false), 3000);
-    } else {
-      alert("Произошла ошибка. Попробуйте ещё раз.");
-    }
+    setFormData({ name: "", phone: "" });
   };
+
   return (
-    <section className="relative py-16 md:py-24 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-blue-100 -z-10" />
-      <div
-        className="absolute inset-0 -z-10 opacity-30"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 25px 25px, rgba(139, 92, 246, 0.15) 2%, transparent 0%), radial-gradient(circle at 75px 75px, rgba(249, 115, 22, 0.15) 2%, transparent 0%)",
-          backgroundSize: "100px 100px",
-        }}
-      />
-      <div className="container max-w-6xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div className="space-y-6 order-2 md:order-1">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-100 text-blue-800 font-medium text-sm">
-              <Icon name="Award" className="h-4 w-4" />
-              Революционная методика оздоровления
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              Природное омоложение суставов и позвоночника{` `}
-              <span className="text-gradient bg-gradient-to-r from-blue-700 via-purple-500 to-orange-500">
-                без лекарств
-              </span>
+    <section className="relative bg-gradient-to-br from-purple-50 to-indigo-100 py-20">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col lg:flex-row items-center gap-12">
+          <div className="lg:w-1/2">
+            <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6">
+              Преобразите свою жизнь с помощью науки
             </h1>
-            <p className="text-xl text-gray-600">
-              Адаптивно функциональная гимнастика на запатентованном тренажёре
-              «Ось Жизни» — ваш короткий путь к омоложению и источнику энергии
-              молодости
+            <p className="text-xl text-gray-600 mb-8">
+              Научно обоснованные методы для достижения ваших целей и создания устойчивых позитивных изменений
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                size="lg"
-                asChild
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
-              >
-                <a href="#contact">
-                  <Icon name="CalendarCheck" className="mr-2" />
-                  Записаться на первое занятие
-                </a>
-              </Button>
-              <Button size="lg" variant="outline" asChild>
-                <a href="#method">
-                  <Icon name="Info" className="mr-2" />
-                  Узнать подробнее
-                </a>
-              </Button>
-            </div>
+            
+            <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-lg max-w-md">
+              <h3 className="text-lg font-semibold mb-4">Получите бесплатную консультацию</h3>
+              <div className="space-y-4">
+                <Input
+                  type="text"
+                  placeholder="Ваше имя"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  required
+                />
+                <Input
+                  type="tel"
+                  placeholder="Ваш телефон"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  required
+                />
+                <Button 
+                  type="submit" 
+                  className="w-full"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <Icon name="Loader2" className="animate-spin mr-2" size={16} />
+                  ) : null}
+                  {isSubmitting ? "Отправка..." : "Получить консультацию"}
+                </Button>
+                {isSubmitted && (
+                  <p className="text-green-600 text-center">Спасибо! Мы свяжемся с вами в ближайшее время.</p>
+                )}
+              </div>
+            </form>
           </div>
-          <div className="relative flex justify-center md:justify-end order-1 md:order-2">
+          
+          <div className="lg:w-1/2">
+            <img 
+              src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Научный подход к изменениям"
+              className="rounded-lg shadow-xl"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
             <div className="relative z-10 h-auto max-h-[80vh] w-auto">
               <img
                 src="https://cdn.poehali.dev/files/fe55c1e4-216a-4dd2-9f59-f91f05c340e4.png"
