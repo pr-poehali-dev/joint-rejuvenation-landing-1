@@ -96,9 +96,14 @@ export const HeroSection = () => {
           </div>
         </div>
       </div>
+      {/* Декоративные элементы фона */}
+      <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-gradient-to-tr from-blue-200 to-purple-200 rounded-full -z-10 opacity-70 blur-lg"></div>
+      <div className="absolute -top-8 -right-8 w-32 h-32 bg-gradient-to-br from-orange-200 to-red-200 rounded-full -z-10 opacity-70 blur-md"></div>
     </section>
   );
 };
+
+export default HeroSection;
             <div className="relative z-10 h-auto max-h-[80vh] w-auto">
               <img
                 src="https://cdn.poehali.dev/files/fe55c1e4-216a-4dd2-9f59-f91f05c340e4.png"
@@ -125,8 +130,13 @@ export const HeroSection = () => {
           <div className="absolute -top-8 -right-8 w-32 h-32 bg-gradient-to-br from-orange-200 to-red-200 rounded-full -z-10 opacity-70 blur-md"></div>
         </div>
       </div>
+      {/* Декоративные элементы фона */}
+      <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-gradient-to-tr from-blue-200 to-purple-200 rounded-full -z-10 opacity-70 blur-lg"></div>
+      <div className="absolute -top-8 -right-8 w-32 h-32 bg-gradient-to-br from-orange-200 to-red-200 rounded-full -z-10 opacity-70 blur-md"></div>
     </section>
   );
 };
+
+export default HeroSection;
 
 export default HeroSection;
