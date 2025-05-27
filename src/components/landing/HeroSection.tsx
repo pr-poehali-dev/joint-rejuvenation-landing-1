@@ -1,46 +1,7 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import Icon from "@/components/ui/icon";
 
-const submitToGoogleForm = async (
-  data: { name: string; phone: string },
-  formUrl: string,
-) => {
-  const formData = new FormData();
-  formData.append("entry.YOUR_NAME_ENTRY_ID", data.name);
-  formData.append("entry.YOUR_PHONE_ENTRY_ID", data.phone);
-
-  try {
-    await fetch(formUrl, {
-      method: "POST",
-      body: formData,
-      mode: "no-cors",
-    });
-  } catch (error) {
-    console.error("Error submitting form:", error);
-  }
-};
-
 export const HeroSection = () => {
-  const [formData, setFormData] = useState({ name: "", phone: "" });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    await submitToGoogleForm(
-      formData,
-      "https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse",
-    );
-
-    setIsSubmitted(true);
-    setIsSubmitting(false);
-    setFormData({ name: "", phone: "" });
-  };
-
   return (
     <section className="relative bg-gradient-to-br from-purple-50 to-indigo-100 py-20">
       <div className="container mx-auto px-4">
@@ -54,53 +15,15 @@ export const HeroSection = () => {
               устойчивых позитивных изменений
             </p>
 
-            <form
-              onSubmit={handleSubmit}
-              className="bg-white p-6 rounded-lg shadow-lg max-w-md"
-            >
-              <h3 className="text-lg font-semibold mb-4">
-                Получите бесплатную консультацию
-              </h3>
-              <div className="space-y-4">
-                <Input
-                  type="text"
-                  placeholder="Ваше имя"
-                  value={formData.name}
-                  onChange={(e) =>
-                    setFormData({ ...formData, name: e.target.value })
-                  }
-                  required
-                />
-                <Input
-                  type="tel"
-                  placeholder="Ваш телефон"
-                  value={formData.phone}
-                  onChange={(e) =>
-                    setFormData({ ...formData, phone: e.target.value })
-                  }
-                  required
-                />
-                <Button
-                  type="submit"
-                  className="w-full"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? (
-                    <Icon
-                      name="Loader2"
-                      className="animate-spin mr-2"
-                      size={16}
-                    />
-                  ) : null}
-                  {isSubmitting ? "Отправка..." : "Получить консультацию"}
-                </Button>
-                {isSubmitted && (
-                  <p className="text-green-600 text-center">
-                    Спасибо! Мы свяжемся с вами в ближайшее время.
-                  </p>
-                )}
-              </div>
-            </form>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button size="lg" className="text-lg px-8 py-3">
+                Начать изменения
+                <Icon name="ArrowRight" className="ml-2" size={20} />
+              </Button>
+              <Button variant="outline" size="lg" className="text-lg px-8 py-3">
+                Узнать больше
+              </Button>
+            </div>
           </div>
 
           <div className="lg:w-1/2">
