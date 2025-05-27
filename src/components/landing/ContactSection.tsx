@@ -1,14 +1,35 @@
 import { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import Icon from "@/components/ui/icon";
+
+// Интерфейс для отправки данных в Google Form
+interface GoogleFormData {
+  name: string;
+  phone: string;
+}
+
+// Функция для отправки данных в Google Form
+const submitToGoogleForm = async (data: GoogleFormData, formUrl: string) => {
+  const formData = new FormData();
+
+  // Замените на ваши entry ID из Google Form
+  formData.append("entry.YOUR_NAME_ENTRY_ID", data.name);
+  formData.append("entry.YOUR_PHONE_ENTRY_ID", data.phone);
+
+  try {
+    await fetch(formUrl, {
+      method: "POST",
+      body: formData,
+      mode: "no-cors", // Обязательно для Google Forms
+    });
+    return true;
+  } catch (error) {
+    console.error("Ошибка отправки формы:", error);
+    return false;
+  }
+};
 
 // Компонент для отображения преимуществ методики
 const BenefitItem = ({ children }: { children: React.ReactNode }) => (
@@ -20,28 +41,50 @@ const BenefitItem = ({ children }: { children: React.ReactNode }) => (
   </div>
 );
 
-// Компонент формы контакта
+// Компонент формы обратной связи
 const ContactForm = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // URL вашей Google Form (замените на свой)
+  const GOOGLE_FORM_URL =
+    "https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse";
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormSubmitted(true);
-    // В реальном проекте здесь будет отправка данных на сервер
+    setIsSubmitting(true);
+
+    const success = await submitToGoogleForm({ name, phone }, GOOGLE_FORM_URL);
+
+    setIsSubmitting(false);
+
+    if (success) {
+      setIsSubmitted(true);
+      setName("");
+      setPhone("");
+
+      // Сбросить состояние через 3 секунды
+      setTimeout(() => setIsSubmitted(false), 3000);
+    } else {
+      alert("Произошла ошибка. Попробуйте ещё раз.");
+    }
   };
 
-  if (formSubmitted) {
+  if (isSubmitted) {
     return (
-      <div className="text-center py-8 space-y-4">
-        <div className="w-20 h-20 bg-green-100 rounded-full mx-auto flex items-center justify-center">
-          <Icon name="Check" className="w-10 h-10 text-green-600" />
+      <div className="text-center py-8">
+        <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+          <Icon
+            name="CheckCircle"
+            className="h-12 w-12 text-green-600 mx-auto mb-3"
+          />
+          <h3 className="text-lg font-semibold text-green-800 mb-2">
+            Заявка отправлена!
+          </h3>
+          <p className="text-green-700">Мы свяжемся с вами в ближайшее время</p>
         </div>
-        <h3 className="text-2xl font-bold">Спасибо за заявку!</h3>
-        <p className="text-gray-600">
-          Мы свяжемся с вами в ближайшее время для уточнения деталей.
-        </p>
       </div>
     );
   }
@@ -62,6 +105,7 @@ const ContactForm = () => {
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
+          disabled={isSubmitting}
           className="border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200"
         />
       </div>
@@ -80,15 +124,26 @@ const ContactForm = () => {
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           required
+          disabled={isSubmitting}
           className="border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200"
         />
       </div>
       <Button
         type="submit"
-        className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition-all h-12 text-base"
+        disabled={isSubmitting}
+        className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition-all h-12 text-base disabled:opacity-50"
       >
-        <Icon name="CalendarCheck" className="mr-2" />
-        Записаться на занятие
+        {isSubmitting ? (
+          <>
+            <Icon name="Loader2" className="mr-2 h-4 w-4 animate-spin" />
+            Отправляем...
+          </>
+        ) : (
+          <>
+            <Icon name="CalendarCheck" className="mr-2" />
+            Записаться на занятие
+          </>
+        )}
       </Button>
       <p className="text-xs text-gray-500 text-center">
         Нажимая на кнопку, вы соглашаетесь с нашей{" "}

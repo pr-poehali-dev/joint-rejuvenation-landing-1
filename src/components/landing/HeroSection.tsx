@@ -1,7 +1,56 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import Icon from "@/components/ui/icon";
 
-export const HeroSection = () => {
+// Функция для отправки в Google Form (та же что и в ContactSection)
+const submitToGoogleForm = async (
+  data: { name: string; phone: string },
+  formUrl: string,
+) => {
+  const formData = new FormData();
+  formData.append("entry.YOUR_NAME_ENTRY_ID", data.name);
+  formData.append("entry.YOUR_PHONE_ENTRY_ID", data.phone);
+
+  try {
+    await fetch(formUrl, {
+      method: "POST",
+      body: formData,
+      mode: "no-cors",
+    });
+    return true;
+  } catch (error) {
+    console.error("Ошибка отправки формы:", error);
+    return false;
+  }
+};
+
+const HeroSection = () => {
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const GOOGLE_FORM_URL =
+    "https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse";
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const success = await submitToGoogleForm({ name, phone }, GOOGLE_FORM_URL);
+
+    setIsSubmitting(false);
+
+    if (success) {
+      setIsSubmitted(true);
+      setName("");
+      setPhone("");
+      setTimeout(() => setIsSubmitted(false), 3000);
+    } else {
+      alert("Произошла ошибка. Попробуйте ещё раз.");
+    }
+  };
   return (
     <section className="relative py-16 md:py-24 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-blue-100 -z-10" />
@@ -79,3 +128,5 @@ export const HeroSection = () => {
     </section>
   );
 };
+
+export default HeroSection;
