@@ -1,92 +1,130 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import Icon from "@/components/ui/icon";
 
-export const HeroSection = () => {
+// Функция для отправки в Google Form (та же что и в ContactSection)
+const submitToGoogleForm = async (
+  data: { name: string; phone: string },
+  formUrl: string,
+) => {
+  const formData = new FormData();
+  formData.append("entry.YOUR_NAME_ENTRY_ID", data.name);
+  formData.append("entry.YOUR_PHONE_ENTRY_ID", data.phone);
+
+  try {
+    await fetch(formUrl, {
+      method: "POST",
+      body: formData,
+      mode: "no-cors",
+    });
+    return true;
+  } catch (error) {
+    console.error("Ошибка отправки формы:", error);
+    return false;
+  }
+};
+
+const HeroSection = () => {
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const GOOGLE_FORM_URL =
+    "https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse";
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const success = await submitToGoogleForm({ name, phone }, GOOGLE_FORM_URL);
+
+    setIsSubmitting(false);
+
+    if (success) {
+      setIsSubmitted(true);
+      setName("");
+      setPhone("");
+      setTimeout(() => setIsSubmitted(false), 3000);
+    } else {
+      alert("Произошла ошибка. Попробуйте ещё раз.");
+    }
+  };
   return (
-    <section className="relative bg-gradient-to-br from-purple-50 via-blue-50 to-orange-50 py-20 overflow-hidden">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col items-center text-center gap-12">
-          <div className="max-w-4xl space-y-6">
-            {/* Бейдж */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 rounded-full text-blue-700 text-sm">
-              <Icon name="Heart" size={16} className="text-blue-600" />
+    <section className="relative py-16 md:py-24 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-blue-100 -z-10" />
+      <div
+        className="absolute inset-0 -z-10 opacity-30"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 25px 25px, rgba(139, 92, 246, 0.15) 2%, transparent 0%), radial-gradient(circle at 75px 75px, rgba(249, 115, 22, 0.15) 2%, transparent 0%)",
+          backgroundSize: "100px 100px",
+        }}
+      />
+      <div className="container max-w-6xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div className="space-y-6 order-2 md:order-1">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-100 text-blue-800 font-medium text-sm">
+              <Icon name="Award" className="h-4 w-4" />
               Революционная методика оздоровления
             </div>
-
-            {/* Основной заголовок */}
-            <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
-              <span className="text-gray-900">Природное</span>
-              <br />
-              <span className="text-gray-900">омоложение</span>
-              <br />
-              <span className="text-gray-900">суставов и</span>
-              <br />
-              <span className="text-gray-900">позвоночника</span>{" "}
-              <span className="text-blue-600">без</span>
-              <br />
-              <span className="bg-gradient-to-r from-purple-600 to-orange-500 bg-clip-text text-transparent">
-                лекарств
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+              Природное омоложение суставов и позвоночника{` `}
+              <span className="text-gradient bg-gradient-to-r from-blue-700 via-purple-500 to-orange-500">
+                без лекарств
               </span>
             </h1>
-
-            {/* Описание */}
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600">
               Адаптивно функциональная гимнастика на запатентованном тренажёре
               «Ось Жизни» — ваш короткий путь к омоложению и источнику энергии
               молодости
             </p>
-
-            {/* Кнопки */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4">
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg rounded-xl"
+                asChild
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
               >
-                <Icon name="Calendar" className="mr-2" size={20} />
-                Записаться на первое занятие
+                <a href="#contact">
+                  <Icon name="CalendarCheck" className="mr-2" />
+                  Записаться на первое занятие
+                </a>
               </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-gray-300 text-gray-700 px-8 py-4 text-lg rounded-xl hover:bg-gray-50"
-              >
-                <Icon name="Info" className="mr-2" size={20} />
-                Узнать подробнее
+              <Button size="lg" variant="outline" asChild>
+                <a href="#method">
+                  <Icon name="Info" className="mr-2" />
+                  Узнать подробнее
+                </a>
               </Button>
             </div>
           </div>
-        </div>
-      </div>
-
-          {/* Правая часть с фото специалиста */}
-          <div className="lg:w-1/2 relative">
-            <div className="relative">
+          <div className="relative flex justify-center md:justify-end order-1 md:order-2">
+            <div className="relative z-10 h-auto max-h-[80vh] w-auto">
               <img
-                src="https://cdn.poehali.dev/files/a08764a1-cf06-4b8e-8065-7870d2c5268a.png"
-                alt="Вячеслав Ан - специалист физической реабилитации"
-                className="w-full max-w-lg ml-auto"
+                src="https://cdn.poehali.dev/files/fe55c1e4-216a-4dd2-9f59-f91f05c340e4.png"
+                alt="Вячеслав Ан - автор методики Ось Жизни"
+                className="h-auto max-h-[80vh] object-contain drop-shadow-2xl"
               />
-
-              {/* Карточка специалиста */}
-              <div className="absolute bottom-8 right-8 bg-blue-600 text-white p-4 rounded-xl shadow-lg">
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-blue-600/90 to-purple-600/90 backdrop-blur-sm shadow-lg rounded-lg px-4 py-3 text-sm border border-blue-400 animate-fade-in">
                 <div className="flex items-center gap-3">
-                  <Icon name="User" size={24} className="text-blue-200" />
-                  <div>
-                    <div className="font-semibold text-lg">Вячеслав Ан</div>
-                    <div className="text-blue-200 text-sm">
+                  <div className="w-10 h-10 flex-shrink-0 rounded-full bg-white/20 flex items-center justify-center">
+                    <Icon name="User" className="h-5 w-5 text-white" />
+                  </div>
+                  <div className="text-white">
+                    <p className="font-bold text-base">Вячеслав Ан</p>
+                    <p className="text-white/90 text-xs">
                       специалист физической реабилитации
-                    </div>
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
+            <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-gradient-to-tr from-blue-200 to-purple-200 rounded-full -z-10 opacity-70 blur-lg"></div>
+            <div className="absolute -top-8 -right-8 w-32 h-32 bg-gradient-to-br from-orange-200 to-red-200 rounded-full -z-10 opacity-70 blur-md"></div>
           </div>
         </div>
       </div>
-
-      {/* Декоративные элементы */}
-      <div className="absolute -top-20 -right-20 w-80 h-80 bg-gradient-to-br from-orange-200 to-pink-200 rounded-full opacity-20 blur-3xl"></div>
-      <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-gradient-to-tr from-blue-200 to-purple-200 rounded-full opacity-20 blur-2xl"></div>
     </section>
   );
 };
